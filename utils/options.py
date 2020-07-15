@@ -1,8 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Python version: 3.6
+"""
+Created on Jul 7/13/20 6:57 PM 2020
+
+@author: Anirban Das
+"""
 
 import argparse
+
 
 def args_parser():
     parser = argparse.ArgumentParser()
@@ -27,6 +32,11 @@ def args_parser():
     parser.add_argument('--max_pool', type=str, default='True',
                         help="Whether use max pooling rather than strided convolutions")
 
+    # Sparsity argument
+    parser.add_argument('--compressor_class', type=str, default='RandomKCompressor',
+                        help="Name of compressor class, RandomKCompressor or TopKCompressor")
+    parser.add_argument('--sparsity', type=float, default=0.3, help="Sparsity K to be used")
+
     # other arguments
     parser.add_argument('--dataset', type=str, default='mnist', help="name of dataset")
     parser.add_argument('--iid', action='store_true', help='whether i.i.d or not')
@@ -35,6 +45,7 @@ def args_parser():
     parser.add_argument('--gpu', type=int, default=0, help="GPU ID, -1 for CPU")
     parser.add_argument('--stopping_rounds', type=int, default=10, help='rounds of early stopping')
     parser.add_argument('--verbose', action='store_true', help='verbose print')
-    parser.add_argument('--seed', type=int, default=1, help='random seed (default: 1)')
+    parser.add_argument('--seed', type=int, default=42, help='random seed (default: 1)')
     args = parser.parse_args()
+    print(args)
     return args

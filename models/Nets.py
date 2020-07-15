@@ -1,6 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Python version: 3.6
+"""
+Created on Jul 7/13/20 6:57 PM 2020
+
+@author: Anirban Das
+"""
 
 import torch
 from torch import nn
